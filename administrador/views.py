@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from .models import Producto
 from .forms import ProductoForm
 from django.contrib.auth.decorators import login_required
 
 def lista_productos(request):
-    productos = Producto.objects.all().order_by('nombre')
+    productos = Producto.objects.all()
     return render(request, 'administrador/lista_productos.html', {'productos': productos})
 
 def detalle_productos(request, pk):
@@ -13,14 +14,13 @@ def detalle_productos(request, pk):
 
 @login_required
 def crear_productos(request):
-    if request.user.perfil.rol in ['administrador']:
+    if request.user.perfil.rol in 'administrador':
         if request.method == 'POST':
             form = ProductoForm(request.POST)
             if form.is_valid():
-                producto = form.save(commit=False)
-#                producto.autor = request.user
-                producto.save()
-                return redirect('administrador:detalleproductos', pk=producto.pk)
+                form.save()
+                messages.success(request, 'Producto creado exitosamente.')
+                return redirect('administrador:listaproductos')
         else:
             form = ProductoForm()
         return render(request, 'administrador/crear_productos.html', {'form': form})
@@ -30,26 +30,22 @@ def crear_productos(request):
 @login_required
 def editar_productos(request, pk):
     producto = get_object_or_404(Producto, pk=pk)
-    if request.user.perfil.rol == 'administrador':
-        if request.method == 'POST':
-            form = ProductoForm(request.POST, instance=producto)
-            if form.is_valid():
-                form.save()
-                return redirect('administrador:detalleproductos', pk=producto.pk)
-        else:
-            form = ProductoForm(instance=producto)
-        return render(request, 'administrador/editar_productos.html', {'form': form})
+    if request.method == 'POST':
+        form = ProductoForm(request.POST, instance=producto)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Producto actualizado exitosamente.')
+            return redirect('administrador:listaproductos')
     else:
-        return redirect('administrador:listaproductos')
+        form = ProductoForm(instance=producto)
+    return render(request, 'administrador/editar_productos.html', {'form': form})
 
 
 @login_required
 def eliminar_productos(request, pk):
     producto = get_object_or_404(Producto, pk=pk)
-    if request.user.perfil.rol == 'administrador':
+    if request.method == 'POST':
         producto.delete()
-    return redirect('administrador:listaproductos')
-
-
-def lista_usuarios(request):
-    return render(request, 'inicio/lista_usuarios.html')
+        messages.success(request, 'Producto eliminado exitosamente.')
+        return redirect('administrador:listaproductos')
+    return render(request, 'administrador/eliminar_productos.html', {'producto': producto})

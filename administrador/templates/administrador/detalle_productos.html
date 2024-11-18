@@ -1,20 +1,18 @@
-{% extends 'baseadmin.html' %}
+{% extends "baseadmin.html" %}
 
-{% block title %}{{ producto.nombre }}{% endblock %}
+{% block title %}Detalle del Producto{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
-    <h2>{{ producto.nombre }}</h2>
-    <p><small class="text-muted">Publicado por {{ producto.administrador.username }} </small></p>
-    <hr>
-    <p>{{ producto.descripcion }}</p>
-    <p>{{ producto.precio }}</p>
-    <p>{{ producto.cantidad_disponible }}</p>
-
+    <h1>Detalle del Producto</h1>
+    <p><strong>Nombre:</strong> {{ producto.nombre }}</p>
+    <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
+    <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+    <p><strong>Cantidad disponible:</strong> {{ producto.cantidad_disponible }}</p>
+    <a href="{% url 'administrador:listaproductos' %}" class="btn btn-secondary">Volver a la lista</a>
     {% if request.user.is_authenticated and request.user.perfil.rol == 'administrador' %}
-        <a href="{% url 'administrador:editar_productos' producto.pk %}" class="btn btn-secondary">Editar Producto</a>
+        <a href="{% url 'administrador:editarproductos' producto.id %}" class="btn btn-warning">Editar</a>
+        <a href="{% url 'administrador:eliminarproductos' producto.id %}" class="btn btn-danger">Eliminar</a>
     {% endif %}
-
-    <a href="{% url 'administrador:lista_productos' %}" class="btn btn-link mt-3">Volver a la Lista de Productos</a>
 </div>
 {% endblock %}
