@@ -1,0 +1,27 @@
+{% extends 'baseadmin.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Eliminar Producto</h2>
+    <p>¿Estás seguro de que deseas eliminar el siguiente producto?</p>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">{{ producto.nombre }}</h5>
+            <p><strong>Descripción:</strong> {{ producto.descripcion|truncatechars:100 }}</p>
+            <p><strong>Precio:</strong> {{ producto.precio }}</p>
+            <p><strong>Cantidad disponible:</strong> ${{ producto.cantidad_disponible }}</p>
+        </div>
+    </div>
+
+    <!-- Botones para confirmar o cancelar la eliminación -->
+    <div class="mt-4">
+        <form action="{% url 'administrador:eliminar_productos' productos.pk %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+        <a href="{% url 'administrador:lista_productos' %}" class="btn btn-secondary">Cancelar</a>
+    </div>
+</div>
+{% endblock %}

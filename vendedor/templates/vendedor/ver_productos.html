@@ -1,0 +1,22 @@
+{% extends 'basevend.html' %}
+{% block title %}Productos{% endblock %}
+{% block content %}
+
+<div class="container mt-4">
+    <h2>Lista de Productos</h2>
+    {% for producto in productos %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ producto.nombre }}</h5>
+                <p class="card-text">{{ producto.stock|truncatechars:100 }}</p>
+                <p class="card-text">{{ producto.precio|truncatechars:100 }}</p>
+                <a href="{% url 'administrador:detalle_productos' producto.pk %}" class="btn btn-primary">Leer más</a>
+            </div>
+        </div>
+    {% empty %}
+        <p>No hay productos disponibles.</p>
+    {% endfor %}
+    {{ request.user.perfil.rol }}
+</div>
+
+{% endblock %}

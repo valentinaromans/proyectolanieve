@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="about-body">
+    <div class="about-heading">
+        <h1>About Us</h1>
+        <p>Hola, somos Fabrica de helados artesanales "La nieve"
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            Pariatur deleniti itaque alias repellat hic quibusdam sunt, sed obcaecati optio eveniet quo impedit ex odio,
+            a
+            necessitatibus nulla eius tempora officiis.</p>
+    </div>
+
+    <div class="about-contenedor">
+        <section class="about">
+            <div class="about-imagen">
+                <img src="/static/images/local.jpeg">
+            </div>
+            <div class="about-contenido">
+                <h2>NUESTRA HISTORIA</h2>
+                <p>
+                    La heladería “La Nieve” es una empresa con más de 60 años de trayectoria en donde sus clientes han
+                    sido cautivados todo este tiempo con sus variados sabores de helados artesanales y con la cercanía y
+                    preocupación de estos hacia el cliente.
+
+                    Sin embargo, considerando que estamos en una época en la que
+                    la tecnología es muy presente en la competencia empresarial, la ausencia de esta puede limitar la
+                    capacidad para competir y adaptarse a las demandas cambiantes del mercado. Es en este contexto donde
+                    surge la idea de implementar una solución innovadora que le dé la oportunidad a la empresa de
+                    modernizarse sin perder su esencia.
+
+                    <span class="about-oculto" id="textoOculto">
+                        Este informe presentara el desarrollo de una aplicación móvil para la heladería “La Nieve” con el
+                        objetivo de transformar la experiencia, tanto como para el cliente y también para los dueños de la
+                        empresa optimizando la gestión interna del negocio. Esta aplicación facilitara el proceso de pedidos
+                        y permitirá que el local no se abrume de gente al permitir pagos en línea creando así un vínculo más
+                        cercano con el cliente.
+
+                        A lo largo de este documento, se expondrán los objetivos del proyecto, la estrategia de desarrollo
+                        adoptada y los beneficios esperados tanto para la heladería como para sus clientes. La
+                        implementación de esta aplicación no solo busca mejorar la eficiencia operativa, sino también
+                        revitalizar la marca y asegurar su continuidad en un mercado en constante evolución. Con este paso,
+                        "La Nieve" se posicionará como un referente no solo en calidad, sino también en innovación,
+                        permitiendo que su legado perdure en el tiempo.
+
+                        Y así poder sacar más frutos de esto motivando al resto de las empresas a innovar en el mundo de las
+                        tecnologías.
+                    </span>
+                </p>
+                <button href="" class="leer-mas" id="textoOculto_btn">Leer más</button>
+            </div>
+        </section>
+
+    </div>
+
+</div>
+
+<script src="/static/js/about.js"></script>
+
+{% endblock %}

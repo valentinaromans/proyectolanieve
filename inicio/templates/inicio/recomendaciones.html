@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="contacto-body">
+    <div class="contacto-form-content">
+        <h2>Enviar formulario</h2>
+    
+        <form class="contacto-form" id="form">
+    
+            <label class="contacto-label" for="name">Nombre</label>
+            <input class="contacto-input" type="text" name="name" id="name" placeholder="Juan" >
+    
+            <label class="contacto-label" for="email">Correo electrónico</label>
+            <input class="contacto-input" type="email" name="email" id="email" placeholder="juan@gmail.com">
+    
+            <label class="contacto-label" for="subject">Asunto</label>
+            <input class="contacto-input" type="text" name="subject" id="subject" placeholder="Atención en tienda">
+    
+            <label class="contacto-label" for="coments">Comentarios</label>
+            <textarea class="contacto-textarea" name="coments" id="coments" cols="30" rows="5" placeholder="Me comunico con ustedes por..."></textarea>
+    
+            
+            <input class="contacto-btn" type="submit" value="Enviar">
+        </form>
+    
+    </div>
+</div>
+{% endblock %}

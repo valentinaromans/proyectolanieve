@@ -1,0 +1,20 @@
+{% extends 'baseadmin.html' %}
+
+{% block title %}{{ producto.nombre }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>{{ producto.nombre }}</h2>
+    <p><small class="text-muted">Publicado por {{ producto.administrador.username }} </small></p>
+    <hr>
+    <p>{{ producto.descripcion }}</p>
+    <p>{{ producto.precio }}</p>
+    <p>{{ producto.cantidad_disponible }}</p>
+
+    {% if request.user.is_authenticated and request.user.perfil.rol == 'administrador' %}
+        <a href="{% url 'administrador:editar_productos' producto.pk %}" class="btn btn-secondary">Editar Producto</a>
+    {% endif %}
+
+    <a href="{% url 'administrador:lista_productos' %}" class="btn btn-link mt-3">Volver a la Lista de Productos</a>
+</div>
+{% endblock %}
