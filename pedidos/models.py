@@ -6,6 +6,7 @@ class Pedido(models.Model):
     cantidad = models.IntegerField()
     estado = models.CharField(max_length=20, choices=[('pendiente', 'Pendiente'), ('realizado', 'Realizado')])
     fecha_hora = models.DateTimeField(auto_now_add=True)
+    codigo = models.CharField(max_length=5, unique=True, blank=True)
 
     def __str__(self):
         return f"{self.cliente} - {self.producto} ({self.estado})"
