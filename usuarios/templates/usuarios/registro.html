@@ -13,26 +13,22 @@
                 <form method="post" action="">
                     {% csrf_token %}
                     <div class="input-box">
-                        <input type="text" name="first_name" placeholder="Nombre" class="input-control" required>
+                        {{ form.username.label_tag }} {{ form.username }}
                     </div>
                     <div class="input-box">
-                        <input type="text" name="last_name" placeholder="Apellido" class="input-control" required>
+                        {{ form.apellido.label_tag }} {{ form.apellido }}
                     </div>
                     <div class="input-box">
-                        <input type="email" name="email" placeholder="Email" class="input-control" required>
+                        {{ form.email.label_tag }} {{ form.email }}
                     </div>
                     <div class="input-box">
-                        <input type="text" name="username" placeholder="Username" class="input-control" required>
+                        {{ form.rol.label_tag }} {{ form.rol }}
                     </div>
                     <div class="input-box">
-                        <select name="rol" class="input-control" required>
-                            <option value="" disabled selected >Seleccionar Rol</option>
-                            <option value="vendedor" >Vendedor</option>
-                            <option value="administrador" >Administrador</option>
-                        </select>
+                        {{ form.password.label_tag }} {{ form.password }}
                     </div>
                     <div class="input-box">
-                        <input type="password" name="password" placeholder="Password" class="input-control" required>
+                        {{ form.password_confirmacion.label_tag }} {{ form.password_confirmacion }}
                     </div>
                     <button type="submit" class="login-btn">Crear Cuenta</button>
                 </form>

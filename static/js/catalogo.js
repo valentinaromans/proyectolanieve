@@ -3,7 +3,7 @@ let previewBox = preveiwContainer.querySelectorAll('.catalogo-preview');
 
 document.querySelectorAll('.catalogo-prod-contenedor .catalogo-producto').forEach(product =>{
     product.onclick = () =>{
-        preveiwContainer.computedStyleMap.display = 'flex';
+        preveiwContainer.style.display = 'flex';
         let name = product.getAttribute('data-name');
         previewBox.forEach(preview =>{
             let target = preview.getAttribute('data-target');

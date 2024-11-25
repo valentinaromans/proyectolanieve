@@ -81,7 +81,7 @@
     color: #666666;
 }
 
-.about-contenido .leer-mas{
+.about-contenido .about-leer-mas{
     display: inline-block;
     padding: 10px 20px;
     background-color: #C0A100;
@@ -95,7 +95,7 @@
     border: none;
 }
 
-.about-contenido .leer-mas:hover{
+.about-contenido .about-leer-mas:hover{
     background-color: #DDBA00;
     box-shadow: none;
     color: #fff;
@@ -139,7 +139,7 @@
         font-size: 16px;
     }
 
-    .about-contenido .leer-mas{
+    .about-contenido .about-leer-mas{
         font-size: 16px;
     }
 }

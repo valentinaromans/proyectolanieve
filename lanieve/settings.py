@@ -37,10 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'usuarios.apps.UsuariosConfig',
+    'usuarios',
     'inicio',
-    'vendedor',
-    'administrador',
+    'productos',
 ]
 
 MIDDLEWARE = [
@@ -54,9 +53,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'lanieve.urls'
-
 import os
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -67,7 +64,6 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.template.context_processors.csrf',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -147,3 +143,10 @@ LOGOUT_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'proyectolanieve@gmail.com'
+EMAIL_HOST_PASSWORD = 'vgfh vagq pnty ktlj'

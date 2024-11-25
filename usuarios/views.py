@@ -1,5 +1,3 @@
-from django.shortcuts import render
-
 # Create your views here.
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
@@ -17,11 +15,11 @@ def registro(request):
             user.set_password(form.cleaned_data['password']) 
             user.save()
             # Crear el perfil asociado al usuario
-            perfil = Perfil.objects.create(user=user, rol=form.cleaned_data['rol'])
+            perfil = Perfil.objects.create(user=user, rol=form.cleaned_data['rol'], nombre=form.cleaned_data['nombre'], apellido=form.cleaned_data['apellido'])
             perfil.save()
             
             messages.success(request, 'Registro exitoso. Ahora puedes iniciar sesión.')
-            return redirect('usuarios:login')
+            #return redirect('usuarios:login')
     else:
         form = RegistroForm()
     return render(request, 'usuarios/registro.html', {'form': form})
@@ -33,7 +31,7 @@ def login_view(request):
         usuario = authenticate(request, username=username, password=password)
         if usuario is not None:
             login(request, usuario)
-            return redirect('inicio:inicio')
+            return redirect('productos:lista_productos')
         else:
             messages.error(request, 'Nombre de usuario o contraseña incorrectos.')
     return render(request, 'usuarios/login.html')
