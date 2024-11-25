@@ -1,10 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
-    {% load static %}
     <!-- Hoja de estilos CSS -->
     <link rel="stylesheet" href="{% static 'css/global.css' %}">
     <link rel="stylesheet" href="{% static 'css/stylebase.css' %}">
@@ -27,7 +27,7 @@
     <!-- Barra de navegación -->
     <header class="navbar-header">
         <div class="navbar-logo">
-          <a href="{% url 'inicio:inicio' %}">
+          <a href="#">
             <img class="imagen-logo" src="/static/images/logo.png" alt="Logo de la marca">
           </a>
         </div>
@@ -42,12 +42,13 @@
                 <li><a href="{% url 'usuarios:registro' %}">Registrarse</a></li>
               {% endif %}
               {% if user.perfil.rol == 'vendedor' %}
-                <li><a href="#">Pedidos pendientes</a></li>
-                <li><a href="#">Historial de pedidos</a></li>
+                <li><a href="{% url 'pedidos:pedidospendientes' %}">Pedidos pendientes</a></li>
+                <li><a href="{% url 'pedidos:historialpedidos' %}">Historial de pedidos</a></li>
                 <li><a href="{% url 'inicio:ayuda_soporte' %}">Ayuda y soporte</a></li>
               {% endif %}
               <li><a href="{% url 'usuarios:logout' %}">Cerrar Sesión</a></li>
             {% else %}
+            <li><a href="{% url 'inicio:inicio' %}">Inicio</a></li>
               <li><a href="{% url 'usuarios:login' %}">Iniciar Sesión</a></li>
               <li><a href="{% url 'inicio:catalogo' %}">Catálogo</a></li>
               <li><a href="{% url 'inicio:about_us' %}">About Us</a></li>

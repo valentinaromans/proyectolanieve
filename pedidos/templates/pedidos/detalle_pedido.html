@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Detalle del Pedido{% endblock %}
+{% block content %}
+<h1>Detalle del Pedido</h1>
+<table>
+    <tr>
+        <th>Cliente:</th>
+        <td>{{ pedido.cliente }}</td>
+    </tr>
+    <tr>
+        <th>Producto:</th>
+        <td>{{ pedido.producto }}</td>
+    </tr>
+    <tr>
+        <th>Cantidad:</th>
+        <td>{{ pedido.cantidad }}</td>
+    </tr>
+    <tr>
+        <th>Estado:</th>
+        <td>{{ pedido.estado }}</td>
+    </tr>
+    <tr>
+        <th>Fecha/Hora:</th>
+        <td>{{ pedido.fecha_hora }}</td>
+    </tr>
+</table>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success">Confirmar Pedido Realizado</button>
+    <a href="{% url 'pedidos:pedidos_pendientes' %}" class="btn btn-secondary">Volver</a>
+</form>
+{% endblock %}
