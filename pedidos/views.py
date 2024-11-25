@@ -22,3 +22,11 @@ def detalle_pedido(request, pk):
         return redirect('pedidos:pedidos_pendientes')  # Redirige a la lista de pendientes
 
     return render(request, 'pedidos/detalle_pedido.html', {'pedido': pedido})
+
+
+def confirmar_pedido(request, pedido_id):
+    pedido = get_object_or_404(Pedido, id=pedido_id)
+    if request.method == 'POST':
+        pedido.estado = 'realizado'
+        pedido.save()
+        return redirect('pedidos:pendientes')
