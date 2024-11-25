@@ -13,9 +13,9 @@
         <p><strong>Fecha y Hora:</strong> {{ pedido.fecha_hora }}</p>
     </div>
     <div class="detalle-buttons">
-        <a href="{% url 'pedidos:pendientes' %}" class="detalle-volver-btn">Volver a Pedidos Pendientes</a>
+        <a href="{% url 'pedidos:pedidospendientes' %}" class="detalle-volver-btn">Volver a Pedidos Pendientes</a>
         {% if pedido.estado == 'pendiente' %}
-            <form method="post" action="{% url 'pedidos:confirmar_pedido' pedido.id %}">
+            <form method="post" action="{% url 'pedidos:confirmarpedido' pedido.id %}">
                 {% csrf_token %}
                 <button type="submit" class="detalle-editar-btn">Confirmar Pedido Realizado</button>
             </form>

@@ -7,12 +7,12 @@
     <table class="styled-table">
         <thead>
             <tr>
-                <th>Codio</th>
+                <th>Codigo</th>
                 <th>Cliente</th>
                 <th>Producto</th>
                 <th>Cantidad</th>
                 <th>Fecha y Hora</th>
-                <th>Estado</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -23,9 +23,8 @@
                 <td>{{ pedido.producto }}</td>
                 <td>{{ pedido.cantidad }}</td>
                 <td>{{ pedido.fecha_hora }}</td>
-                <td>{{ pedido.estado }}</td>
                 <td>
-                    <a href="{% url 'pedidos:detalle_pedido' pedido.id %}" class="btn-view">Ver Detalle</a>
+                    <a href="{% url 'pedidos:detallepedido' pedido.id %}" class="btn-view">Ver Detalle</a>
                 </td>
             </tr>
             {% endfor %}
