@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'usuarios',
     'inicio',
     'productos',
+    'pedidos',
 ]
 
 MIDDLEWARE = [
@@ -82,10 +83,10 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'proyectolanieve$lanieve_db',
-        'USER': 'proyectolanieve',
-        'PASSWORD': 'Lanieve12345',
-        'HOST': 'proyectolanieve.mysql.pythonanywhere-services.com',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
@@ -129,7 +130,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Dire ctorio donde colocaremos archivos estáticos globales.
-STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
 MEDIA_URL = '/media/'
