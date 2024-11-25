@@ -1,33 +1,26 @@
 {% extends "base.html" %}
 {% block title %}Detalle del Pedido{% endblock %}
 {% block content %}
-<h1>Detalle del Pedido</h1>
-<table>
-    <tr>
-        <th>Cliente:</th>
-        <td>{{ pedido.cliente }}</td>
-    </tr>
-    <tr>
-        <th>Producto:</th>
-        <td>{{ pedido.producto }}</td>
-    </tr>
-    <tr>
-        <th>Cantidad:</th>
-        <td>{{ pedido.cantidad }}</td>
-    </tr>
-    <tr>
-        <th>Estado:</th>
-        <td>{{ pedido.estado }}</td>
-    </tr>
-    <tr>
-        <th>Fecha/Hora:</th>
-        <td>{{ pedido.fecha_hora }}</td>
-    </tr>
-</table>
 
-<form method="post">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-success">Confirmar Pedido Realizado</button>
-    <a href="{% url 'pedidos:pedidos_pendientes' %}" class="btn btn-secondary">Volver</a>
-</form>
+<div class="container mt-4 detalle-styled">
+    <h1 class="detalle-title">Detalle del Pedido</h1>
+    <div class="detalle-product">
+        <p><strong>Código del Pedido:</strong> {{ pedido.codigo }}</p>
+        <p><strong>Cliente:</strong> {{ pedido.cliente }}</p>
+        <p><strong>Producto:</strong> {{ pedido.producto }}</p>
+        <p><strong>Cantidad:</strong> {{ pedido.cantidad }}</p>
+        <p><strong>Estado:</strong> {{ pedido.estado }}</p>
+        <p><strong>Fecha y Hora:</strong> {{ pedido.fecha_hora }}</p>
+    </div>
+    <div class="detalle-buttons">
+        <a href="{% url 'pedidos:pedidospendientes' %}" class="detalle-volver-btn">Volver a Pedidos Pendientes</a>
+        {% if pedido.estado == 'pendiente' %}
+            <form method="post" action="{% url 'pedidos:confirmarpedido' pedido.id %}">
+                {% csrf_token %}
+                <button type="submit" class="detalle-editar-btn">Confirmar Pedido Realizado</button>
+            </form>
+        {% endif %}
+    </div>
+</div>
+
 {% endblock %}
